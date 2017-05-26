@@ -4,6 +4,7 @@ set fillchars+=vert:\
 set clipboard=unnamed
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-y> <Plug>(easymotion-s)
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
