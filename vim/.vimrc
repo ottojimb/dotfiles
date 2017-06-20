@@ -1,7 +1,27 @@
 set number
 set mouse=a
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 set clipboard=unnamed
+autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+let mapleader=","
+let taboo_tab_format=" %N. %f%m "
+
+" Taboo
+set sessionoptions+=tabpages,globals
+cabbrev tr TabooRename
+
+" tab switching shortcuts
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-y> <Plug>(easymotion-s)
@@ -17,4 +37,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'gcmt/taboo.vim'
+
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 call plug#end()
