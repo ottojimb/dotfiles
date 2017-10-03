@@ -3,6 +3,7 @@ set mouse=a
 set fillchars+=vert:\
 set clipboard=unnamed
 set encoding=utf-8
+
 let g:airline_powerline_fonts=1
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
@@ -40,9 +41,15 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gcmt/taboo.vim'
+Plug 'dracula/vim'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 call plug#end()
+
+color daracula
+if has("termguicolors")
+  set termguicolors
+endif
