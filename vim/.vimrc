@@ -49,7 +49,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 call plug#end()
 
-color daracula
+color dracula
 if has("termguicolors")
   set termguicolors
 endif
