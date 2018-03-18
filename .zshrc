@@ -1,3 +1,4 @@
+# Add this at the end of .zshrc
 if [[ ! $TERM =~ screen ]]; then
     exec tmux
 fi
