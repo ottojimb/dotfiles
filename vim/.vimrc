@@ -50,6 +50,6 @@ Plug 'honza/vim-snippets'
 call plug#end()
 
 color dracula
-if has("termguicolors")
-  set termguicolors
-endif
+"if has("termguicolors")
+"  set termguicolors
+"endif
