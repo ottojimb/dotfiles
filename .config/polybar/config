@@ -185,7 +185,7 @@ label-mounted = %{F#bd93f9}%{F-} %percentage_used%% %{F#8be8fd}/%{F-} %total%
 [module/player-mpris-simple]
 type = custom/script
 exec = ~/polybar-scripts/player-mpris-simple.sh
-interval = 3
+interval = 3.0
 click-left = playerctl previous
 click-right = playerctl next
 click-middle = playerctl play-pause
