@@ -1,5 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
 
 # Path to your oh-my-zsh installation.
   export ZSH="/home/ottojimb/.oh-my-zsh"
@@ -28,10 +32,11 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey '^R' history-incremental-search-backward
 
-export PATH=$PATH:$(go env GOPATH)/bin:/home/ottojimb/.local/bin
 export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$(go env GOPATH)/bin:$HOME/.local/bin
 export PATH="$PATH":"/opt/flutter/.pub-cache/bin"
 export PATH="$PATH":"/opt/flutter/bin/cache/dart-sdk/bin"
+
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash

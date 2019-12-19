@@ -1,19 +1,19 @@
 [bar/main]
 bottom = true
 width = 100%
-height = 24
+height = 48
 
-background = #282a36
-current = #44475a
-foreground = #f8f8f2
-comment = #6272a4
-cyan = #8be8fd
-green = #50fa7b
-orange = #ffb86c
-pink = #ff79c6
-purple = #bd93f9
-red = #ff5555
-yellow = #f1fa8c
+background = ${xrdb:color0:#222}
+current = ${xrdb:color1:#222}
+foreground = ${xrdb:color7:#222}
+comment = ${xrdb:color7:#222}
+cyan = ${xrdb:color7:#222}
+green = ${xrdb:color7:#222}
+orange = ${xrdb:color7:#222}
+pink = ${xrdb:color7:#222}
+purple = ${xrdb:color7:#222}
+red = ${xrdb:color7:#222}
+yellow = ${xrdb:color7:#222}
 
 line-color = ${self.background}
 line-size = 1
@@ -26,11 +26,11 @@ border-right-size = 0
 padding = 2
 module-margin = 2
 
-font-0 = "pango:style=monospace:size=10;3"
-font-1 = "DejaVu Sans:pixelsize=10;2"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
-font-3 = "Font Awesome 5 Brands:style=Regular:pixelsize=12;2"
-font-4 = "Material Icons:style=Regular:size=12;5"
+font-0 = "pango:style=monospace:size=16;3"
+font-1 = "DejaVu Sans:pixelsize=16;2"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=16;2"
+font-3 = "Font Awesome 5 Brands:style=Regular:pixelsize=16;2"
+font-4 = "Material Icons:style=Regular:size=16;5"
 
 tray-position = right
 tray-maxsize = 24
@@ -184,7 +184,7 @@ label-mounted = %{F#bd93f9}%{F-} %percentage_used%% %{F#8be8fd}/%{F-} %total%
 
 [module/player-mpris-simple]
 type = custom/script
-exec = ~/polybar-scripts/player-mpris-simple.sh
+exec = ~/.config/polybar/scripts/player-mpris-simple.sh
 interval = 3.0
 click-left = playerctl previous
 click-right = playerctl next
