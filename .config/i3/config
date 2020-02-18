@@ -157,6 +157,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 exec --no-startup-id wal -R; sleep 1; picom -b
 exec --no-startup-id polybar main
+exec --no-startup-id volumeicon
 bindsym $mod+Shift+n --release exec --no-startup-id chromium
 bindsym $mod+Shift+m --release exec --no-startup-id spotify
 bindsym $mod+Shift+c --release exec --no-startup-id telegram-desktop
