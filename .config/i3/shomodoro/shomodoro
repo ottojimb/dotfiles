@@ -1,7 +1,0 @@
-#!/bin/env bash
-BASEDIR=$(dirname $0)
-echo $BASEDIR
-
-notify-send "Pomodoro Iniciado" -i $BASEDIR/clock.png -t 1000
-sleep $1
-notify-send "Pomodoro Finalizado" "$2" -i $BASEDIR/clock.png
