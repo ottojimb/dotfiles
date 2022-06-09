@@ -278,6 +278,8 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom -b --experimental-backends
@@ -287,4 +289,3 @@ exec --no-startup-id setxkbmap us,us -variant intl, -option 'grp:toggle'
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id g213-led -fx cwave keys 0a
 exec --no-startup-id amixer -q -D pipewire sset Master 10%
-
