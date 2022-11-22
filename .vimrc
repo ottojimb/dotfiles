@@ -1,11 +1,11 @@
 set number
 set mouse=a
 set fillchars+=vert:\
-set clipboard=unnamed
+set clipboard=unnamedplus
 set encoding=utf-8
 
 let g:airline_powerline_fonts=1
-autocmd BufWritePre <buffer> :%s/\s\+$//e
+" autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 let mapleader=","
 let taboo_tab_format=" %N. %f%m "
@@ -41,15 +41,12 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gcmt/taboo.vim'
-Plug 'dracula/vim'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 call plug#end()
 
-color dracula
-"if has("termguicolors")
+" if has("termguicolors")
 "  set termguicolors
-"endif
+" endif

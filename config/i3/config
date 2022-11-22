@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 10 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -36,10 +36,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pipewire sset Master 5%+ && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pipewire sset Master 5%- && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -51,9 +47,10 @@ bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#6D3377' -sf '#EEEEEE' -fn 'monospace-10' -p 'dmenu prompt >'"
 # A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
@@ -179,18 +176,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-}
-
 #############################
 ### settings for i3-gaps: ###
 #############################
 
 # Set inner/outer gaps
-gaps inner 20
+gaps inner 4
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -222,6 +213,9 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 new_window none
 new_float none
 
+default_border none
+default_floating_border none
+
 # Hide borders
 hide_edge_borders none
 
@@ -231,24 +225,25 @@ bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
 # Plasma compatibility improvements
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
+# for_window [window_role="pop-up"] floating enable
+# for_window [window_role="task_dialog"] floating enable
 
-for_window [class="zoom"] floating enable
-for_window [class="zoom"] [title="Zoom Meeting"] floating disable
-for_window [class="yakuake"] floating enable
-for_window [class="systemsettings"] floating enable
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
-no_focus [class="plasmashell" window_type="notification"]
+for_window [class="^.*"] border none
+for_window [class="zoom"] floating enable; border none
+for_window [class="zoom"] [title="Zoom Meeting"] floating disable; border none
+# for_window [class="yakuake"] floating enable
+# for_window [class="systemsettings"] floating enable
+# for_window [class="plasmashell"] floating enable;
+# for_window [class="Plasma"] floating enable; border none
+# for_window [title="plasma-desktop"] floating enable; border none
+# for_window [title="win7"] floating enable; border none
+# for_window [class="krunner"] floating enable; border none
+# for_window [class="Kmix"] floating enable; border none
+# for_window [class="Klipper"] floating enable; border none
+# for_window [class="Plasmoidviewer"] floating enable; border none
+# for_window [class="(?i)*nextcloud*"] floating disable
+# for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+# no_focus [class="plasmashell" window_type="notification"]
 
 workspace 1 output DP-2
 workspace 2 output DP-2
@@ -262,30 +257,49 @@ workspace 9 output HDMI-0
 workspace 10 output HDMI-0
 
 bindsym $mod+Shift+s sticky toggle
+bindsym $mod+Shift+n exec --no-startup-id thunar
 bindsym $mod+t exec --no-startup-id killall picom
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-bindsym $mod+F3 exec --no-startup-id pcmanfm
 bindsym $mod+F10 exec --no-startup-id $HOME/.screenlayout/left.sh
 bindsym $mod+F11 exec --no-startup-id $HOME/.screenlayout/split.sh
 bindsym $mod+F12 exec --no-startup-id $HOME/.screenlayout/right.sh
 bindsym $mod+Delete exec --no-startup-id dunstctl history-pop
 bindsym $mod+BackSpace exec --no-startup-id dunstctl close-all
+bindsym $mod+End exec --no-startup-id i3lock-fancy --nofork
+
 bindsym Print exec --no-startup-id flameshot gui
 
 # Media player controls
-bindsym XF86AudioPlay exec --no-startup-id playerctl play
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86AudioPlay exec --no-startup-id playerctl play && $refresh_i3status
+bindsym XF86AudioStop exec --no-startup-id playerctl stop && $refresh_i3status
+bindsym XF86AudioNext exec --no-startup-id playerctl next && $refresh_i3status
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause && $refresh_i3status
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pipewire sset Master 5%+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pipewire sset Master 5%- && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# bindsym $mod+mod1+a exec --no-startup-id playerctl play && $refresh_i3status
+# bindsym $mod+mod1+d exec --no-startup-id playerctl stop && $refresh_i3status
+# bindsym $mod+mod1+c exec --no-startup-id playerctl next && $refresh_i3status
+# bindsym $mod+mod1+x exec --no-startup-id playerctl play-pause && $refresh_i3status
+# bindsym $mod+mod1+z exec --no-startup-id playerctl previous && $refresh_i3status
+# bindsym $mod+mod1+n exec --no-startup-id amixer -q -D pipewire sset Master 5%+ && $refresh_i3status
+# bindsym $mod+mod1+v exec --no-startup-id amixer -q -D pipewire sset Master 5%- && $refresh_i3status
+# bindsym $mod+mod1+b exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
+
+exec --no-startup-id $HOME/.screenlayout/split.sh
 exec --no-startup-id nitrogen --restore
+# exec --no-startup-id wal -R
 exec --no-startup-id picom -b --experimental-backends
+exec --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id dunst
 exec --no-startup-id xset r rate 300 50
+exec --no-startup-id numlockx on
 exec --no-startup-id setxkbmap us,us -variant intl, -option 'grp:toggle'
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id g213-led -fx cwave keys 0a
 exec --no-startup-id amixer -q -D pipewire sset Master 10%
+
