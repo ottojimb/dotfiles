@@ -25,7 +25,11 @@ git
 google-chrome
 grub
 gst-plugins-bad
+gst-plugins-good
 gvfs
+gvfs-mtp
+gvfs-nfs
+gvfs-smb
 gvim
 htop
 i3-wm
