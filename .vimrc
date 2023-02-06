@@ -1,6 +1,6 @@
 set number
 set mouse=a
-set fillchars+=vert:\
+set fillchars+=vert:\|
 set clipboard=unnamedplus
 set encoding=utf-8
 
