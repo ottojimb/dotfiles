@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10 
+#font ubuntu:monospace 14 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -145,7 +145,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Control+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -233,6 +233,7 @@ for_window [class="zoom"] floating enable; border none
 for_window [class="zoom"] [title="Zoom Meeting"] floating disable; border none
 for_window [class="Telegram"] floating enable; border none
 for_window [class="pomatez"] floating enable; border none
+for_window [class="qutebrowser"] floating enable; border none
 # for_window [class="yakuake"] floating enable
 # for_window [class="systemsettings"] floating enable
 # for_window [class="plasmashell"] floating enable;
@@ -259,8 +260,10 @@ workspace 9 output HDMI-0
 workspace 10 output HDMI-0
 
 bindsym $mod+Shift+s sticky toggle
-bindsym $mod+Shift+n exec --no-startup-id thunar
+bindsym $mod+Shift+n exec --no-startup-id thunar $HOME/Desktop
 bindsym $mod+t exec --no-startup-id killall picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom -b
+bindsym $mod+Ctrl+k exec --no-startup-id "setxkbmap us,us -variant intl, -option 'grp:toggle' && xset r rate 300 50"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+F10 exec --no-startup-id $HOME/.screenlayout/left.sh
 bindsym $mod+F11 exec --no-startup-id $HOME/.screenlayout/split.sh
@@ -268,10 +271,13 @@ bindsym $mod+F12 exec --no-startup-id $HOME/.screenlayout/right.sh
 bindsym $mod+Delete exec --no-startup-id dunstctl history-pop
 bindsym $mod+BackSpace exec --no-startup-id dunstctl close-all
 bindsym $mod+End exec --no-startup-id i3lock-fancy --nofork
+
 bindsym $mod+c move absolute position center
 
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+mod1+p exec --no-startup-id flameshot gui
+bindsym $mod+mod1+h exec --no-startup-id qutebrowser chat.openai.com
+bindsym $mod+mod1+space exec --no-startup-id telegram-desktop
 
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play && $refresh_i3status
@@ -298,7 +304,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id $HOME/.screenlayout/split.sh
 exec --no-startup-id nitrogen --restore
 # exec --no-startup-id wal -R
-exec --no-startup-id parcellite
 exec --no-startup-id picom -b
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id dunst
